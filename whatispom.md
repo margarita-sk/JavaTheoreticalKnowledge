@@ -317,7 +317,7 @@ Profile descriptor
 mvn install:install-file -Dfile=${FILE_PATH}/carousel-lib.jar -DgroupId=ru.carousel -DartifactId=carousel-lib -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
 ```
 В локальном репозитории «.m2» maven создаст директорию ru/carousel, в которой разместит данную библиотеку и создаст к ней описание в виде pom.xml.
-
+By default, maven local repository is %USER_HOME%/.m2 directory
 
 ## 7. What is maven plugins, how to run it from command line
 
