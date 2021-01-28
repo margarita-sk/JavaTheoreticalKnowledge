@@ -466,7 +466,7 @@ system
 ## 12. What are bom files?
 
 Bill Of Materials (спецификация материалов). BOM - это особый вид pom файла, который контролирует версии зависимостей проекта и предоставляет центральное место для определения и обновления этих версий. Он привносит гибкость с помощью возможности добавлять зависимости в модуль и не думать об их версии.
-
+The root of the project is the BOM POM. It defines the versions of all the artifacts that will be created in the library. Other projects that wish to use the library should import this POM into the dependencyManagement section of their POM.
 When we have a set of projects that inherit a common parent, we can put all dependency information in a shared POM file called BOM.
 
 Following is an example of how to write a BOM file:
@@ -569,3 +569,50 @@ If the same artifact is defined with different versions in 2 imported BOMs, then
 
 ## Super POM
 The Super POM is Maven's default POM. All POMs extend the Super POM unless explicitly set, meaning the configuration specified in the Super POM is inherited by the POMs you created for your projects.
+
+## 13. Dependency management
+
+Dependency managment can be used for two purpose. 
+First, to make child's pom shorter we can move details of dependencies (such as version, scope) into parent's <dependencyManagment>.
+Second, to control transitive dependencies. For example, we have child's poms and it both inferits some dependencies with configurations form parent's pom. But we want to use our own configurations of dependencies in the child's pom. So we can describe it in <dependencyManagment> part.
+	
+The examples in the previous section describe how to specify managed dependencies through inheritance. However, in larger projects it may be impossible to accomplish this since a project can only inherit from a single parent. To accommodate this, projects can import managed dependencies from other projects. This is accomplished by declaring a POM artifact as a dependency with a scope of "import".
+
+Another nice opportunity to use <dependencyManagment> is to do it with import.
+<parent> can be only one in the pom. But there can be many imports, which are described in <dependancyManagment>
+
+Project X
+```
+<project>
+...
+ <dependencyManagement>
+   <dependencies>
+     <dependency>
+       <groupId>test</groupId>
+       <artifactId>a</artifactId>
+       <version>1.1</version>
+     </dependency>
+     ...
+   </dependencies>
+ </dependencyManagement>
+</project>
+```
+
+
+Project Z
+```
+<project>
+...
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>maven</groupId>
+        <artifactId>X</artifactId>
+        <version>1.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+...
+  </dependencyManagement>
+</project>
+```
