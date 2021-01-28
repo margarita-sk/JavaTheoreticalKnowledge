@@ -2,6 +2,7 @@ When we create an instace of a class using new operator, it does two things
 
 Load the class in to memory, if it is not loaded - which means creating in-memory representation of the class from the .class file so that an instance can be created out of it. This includes initializing static variables (resolving of that class)
 create an instance of that class and store the reference to the variable.
+
 Class.forName does only the first thing. It loads the class in to memory and return that reference as an instance of Class. If we want to create an instance then, we can call newInstance method of that class. which will invoke the default constructor (no argument constructor). Note that if the default constructor is not accessible, then newInstance method will throw an IllegalAccessException. and if the class is an abstract class or interface or it does not have a default constructor, then it will throw an InstantiationException. If any exception araises during resolving of that class, it will throw an ExceptionInInitializerError.
 
 If the default constructor is not defined, then we have to invoke the defiend constructor using reflection API.
