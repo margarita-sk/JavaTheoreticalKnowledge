@@ -37,11 +37,28 @@
 
 
 
-FROM — задаёт базовый (родительский) образ.
-LABEL — описывает метаданные. Например — сведения о том, кто создал и поддерживает образ.
-ENV — устанавливает постоянные переменные среды.
-RUN — выполняет команду и создаёт слой образа. Используется для установки в контейнер пакетов.
-COPY — копирует в контейнер файлы и папки.
+- FROM — задаёт базовый (родительский) образ.
+- LABEL — описывает метаданные. Например — сведения о том, кто создал и поддерживает образ.
+- ENV — устанавливает постоянные переменные среды.
+- RUN — выполняет команду и создаёт слой образа. Используется для установки в контейнер пакетов.
+
+- COPY — копирует в контейнер файлы и папки.
+The COPY instruction lets us copy a file (or files) from the host system into the image. This means the files become a part of every container that is created from that image. The syntax for the COPY instruction is similar to other copy commands we saw above: COPY <SRC> <DEST>
+Just like the other copy commands, SRC can be either a single file or a directory on the host machine. It can also include wildcard characters to match multiple files.
+
+This will copy a single from the current Docker build context into the image: COPY properties.ini /config/
+And this will copy all XML files into the Docker image:
+
+COPY *.xml /config/
+The main downside of this approach is that we cannot use it for running Docker containers. Docker images are not Docker containers, so this approach only makes sense to use when the set of files needed inside the image is known ahead of time.
+
+COPY and ADD are both Dockerfile instructions that serve similar purposes. They let you copy files from a specific location into a Docker image.
+COPY takes in a src and destination. It only lets you copy in a local file or directory from your host (the machine building the Docker image) into the Docker image itself.
+
+ADD lets you do that too, but it also supports 2 other sources. First, you can use a URL instead of a local file / directory. Secondly, you can extract a tar file from the source directly into the destination
+A valid use case for ADD is when you want to extract a local tar file into a specific directory in your Docker image.
+If you’re copying in local files to your Docker image, always use COPY because it’s more explicit.
+
 ADD — копирует файлы и папки в контейнер, может распаковывать локальные .tar-файлы.
 CMD — описывает команду с аргументами, которую нужно выполнить когда контейнер будет запущен. Аргументы могут быть переопределены при запуске контейнера. В файле может присутствовать лишь одна инструкция CMD.
 WORKDIR — задаёт рабочую директорию для следующей инструкции.
