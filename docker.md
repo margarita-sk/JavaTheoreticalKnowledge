@@ -1,5 +1,7 @@
 # Docker
 
+## Комманды
+
 #1. docker ps — смотрим список запущенных контейнеров
 Ей можно передать несколько параметров, вот самые полезные из них:
 -q — «тихий» режим, в котором команда выводит только id контейнеров (полезно, когда вам нужно знать только id или же при использовании этой команды в сценариях).
@@ -36,7 +38,7 @@
 Данная команда показывает список томов, которые являются основным механизмом для хранения данных, генерируемых контейнерами Docker.
 
 
-
+## Инструкции
 - FROM — задаёт базовый (родительский) образ.
 - LABEL — описывает метаданные. Например — сведения о том, кто создал и поддерживает образ.
 - ENV — устанавливает постоянные переменные среды.
@@ -66,3 +68,13 @@ ARG — задаёт переменные для передачи Docker во в
 ENTRYPOINT — предоставляет команду с аргументами для вызова во время выполнения контейнера. Аргументы не переопределяются.
 EXPOSE — указывает на необходимость открыть порт.
 VOLUME — создаёт точку монтирования для работы с постоянным хранилищем.
+
+
+## Why do we need buildpack instead dockerfile?
+
+Beacause there is no need to pack our app into the jar file and then to turn it into image in the container. We can at once, using maven plugin create image. 
+It’s generally best to unpack your jar and run in an exploded form.
+
+The second issue with the file is that it isn’t very efficient if you frequently update your application. Docker images are built in layers, and in this case your application and all its dependencies are put into a single layer. Since you probably recompile your code more often than you upgrade the version of Spring Boot you use, it’s often better to separate things a bit more. If you put jar files in the layer before your application classes, Docker often only needs to change the very bottom layer and can pick others up from its cache.
+
+Two new features are introduced in Spring Boot 2.3.0.M1 to help improve on these existing techniques: buildpack support and layered jars.
