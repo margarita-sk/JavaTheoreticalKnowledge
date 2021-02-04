@@ -21,7 +21,6 @@ public class Person {
     @Id
     private long personId;
     private String name;
-...
 }
 ```
 
@@ -52,7 +51,6 @@ public class MyProduct {
     @Id
     private long productId;
     private String name;
-...
 }
 ```
 
@@ -67,7 +65,7 @@ public class Pen extends MyProduct {
 }
 ```
 
-
+```
 @Entity
 @DiscriminatorValue("1")
 public class Book extends MyProduct {
@@ -78,6 +76,8 @@ public class Book extends MyProduct {
 public class Pen extends MyProduct {
     // ...
 }
+```
+
 Hibernate adds two other pre-defined values that the annotation can take: “null” and “not null“:
 
 @DiscriminatorValue(“null”) – means that any row without a discriminator value will be mapped to the entity class with this annotation; this can be applied to the root class of the hierarchy
@@ -100,7 +100,7 @@ This strategy has the advantage of polymorphic query performance since only one 
 Недостатки:
 - получение сущностей требует слияние таблиц
 
-
+```
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Animal {
@@ -110,7 +110,9 @@ public class Animal {
 
     // constructor, getters, setters 
 }
+```
 
+```
 @Entity
 public class Pet extends Animal {
     private String name;
@@ -124,7 +126,7 @@ To customize this column, we can add the @PrimaryKeyJoinColumn annotation:
 public class Pet extends Animal {
     // ...
 }
-
+```
 
 ## 4. Table per Class
 Эта статегия создает каждой sub-сущности по таблице.
@@ -133,6 +135,7 @@ allowing associations and polymorphic queries as a result.
 
 To use this strategy, we only need to add the @Inheritance annotation to the base class:
 
+```
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Vehicle {
@@ -141,7 +144,7 @@ public class Vehicle {
     private String manufacturer;
 ...
 }
-
+```
 
 This is not very different from merely mapping each entity without inheritance. The distinction is apparent when querying the base class, which will return all the sub-class records as well by using a UNION statement in the background.
 
