@@ -59,3 +59,6 @@ There are four main groups -
 
 
 That said, the ideal place to find documentation about all exceptions - is in the API itself - just go through the hierarchy of DataAccessException.
+
+
+
