@@ -80,3 +80,8 @@ Minimal size of storage is 5 gb.
 отправляли уведомления о том, что работник не заполнил
 
 We use Jira in our company for time tracking. Based on it the salary is calculated. If an employee forgot to entry working hours and if a quantity of working hours is too small, an employee receives a notification to make an entry. If an employee doesn't, the manager receive the notification to find out.
+
+database design
+bug fixing
+backend development
+unit and integration tests development
