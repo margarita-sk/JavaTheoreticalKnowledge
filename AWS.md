@@ -49,6 +49,7 @@ Amazon Glacier
 
 
 7. AWS RDS
+Amazon Relational Database Service
 
 RDS — is a service of databases. It contains separte VPS servers, which are opimized for work with databases.
 DB engines which can be used in AWS RDS
@@ -64,6 +65,9 @@ Minimal size of storage is 5 gb.
 
 ### General questions
 - Tell some usecase about working with AWS S3
+
+
+
 - make Spring boot application and deploy it to EC2 
  api сохранение, получение всех и получение конкретных файлов пдф.
 база данных с postgres
@@ -73,3 +77,6 @@ Minimal size of storage is 5 gb.
 Про rule engine тожа рассказать
 составлять аналитику. Рулы для выплаты зарплат. агрегировали и выставляли заработную плату, хранили эту информацию и мог смотреть
 аналитические метрики.
+отправляли уведомления о том, что работник не заполнил
+
+We use Jira in our company for time tracking. Based on it the salary is calculated. If an employee forgot to entry working hours and if a quantity of working hours is too small, an employee receives a notification to make an entry. If an employee doesn't, the manager receive the notification to find out.
