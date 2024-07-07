@@ -209,7 +209,7 @@ public class Config {
   ```
 If we have more than one bean that qualifies for spring injection, then we use `@Qualifer` to specify which needs to be used for injection.
 
-There **is** a difference: `@Bean("simpleCar")` (or `@Component("car")`) gives your bean with name "car" in the Spring Context, whereas `@Qualifier("car")` only adds information **without changing the name of the bean**.
+There **is** a difference: `@Bean("simpleCar")` (or `@Component("car")`) gives your bean with the name "car" in the Spring Context, whereas `@Qualifier("car")` only adds information **without changing the name of the bean**.
 
 ```
 @Configuration
@@ -252,8 +252,4 @@ Map<String, TypeOne> typeOneMap;
 // {beanThree=BeanThree@9f674ac, beanTwo=BeanTwo@1da4b3f9}
 ```
 
-</details>
-
-<details>
-  <summary></summary>
 </details>
