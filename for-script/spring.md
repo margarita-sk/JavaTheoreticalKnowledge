@@ -251,5 +251,47 @@ Map<String, TypeOne> typeOneMap;
 // The map will only contain the 2 beans with the qualifier "beanQualifier".
 // {beanThree=BeanThree@9f674ac, beanTwo=BeanTwo@1da4b3f9}
 ```
+</details>
 
+<details>
+	<summary>Spring beans lifecycle</summary>
+
+ **Bean instantiation and DI**
+
+1. BeanDefinitionReader parses configuration (xml, java, @) and creates BeanDefinitions
+
+2. BeanFactoryPostProcessor modificates BeanDefinitions (property resolution, custom annotation processing)
+
+2. BeanFactory instantiates Beans based on BeanDefinitions by invoking constructors (constructor-based DI)
+
+3. Inject bean dependencies by calling setters and field injection (reflection)
+
+**BeanPostProcessor adjusts beans - postProcessBeforeInitialization() - 1st round**
+
+**Bean initialization**
+
+1. Check for Spring Awareness
+
+- If bean **implements BeanNameAware** - call **setBeanName()**
+- If bean implements **BeanClassLoaderAware** - call **setBeanClassLoader()**
+- If bean implements **ApplicationContextAware** - call **setApplicationContext()**
+
+2. Bean Creation Lifecycle Callback
+
+- If **@PostConstruct (JSR-250)** is present - call method annotated with it
+- If bean type **implements InitialazingBean** - call method **afterPropertiesSet()**
+- If bean definition contains **init-method** or **@Bean(initMethod=””)** - call the init method
+
+**BeanPostProcessor - postProcessAfterInitialization() - 2d round** (for proxies)
+
+**Bean Destruction Lifecycle callback**
+
+- If **@PreDestroy (JSR-250)** is present - call method annotated with it
+- If bean type **implements DisposableBean** - call method **destroy()**
+- If bean definition contains **destroy-method** or **@Bean(destroyMethod=””)** - call the destroy method
+</details>
+
+<details>
+	<summary>What is BeanPostProcessor?</summary>
+It is an interface with two default methods (that we may overrite): postProcessBeforeInitialization and postProcessAfterInitialization. We can configure several custom postProcessors and set the order.	
 </details>
