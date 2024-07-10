@@ -295,3 +295,95 @@ Map<String, TypeOne> typeOneMap;
 	<summary>What is BeanPostProcessor?</summary>
 It is an interface with two default methods (that we may overrite): postProcessBeforeInitialization and postProcessAfterInitialization. We can configure several custom postProcessors and set the order.	
 </details>
+
+<details>
+	<summary>Bean annotations?</summary>
+	
+- @Component
+- @Service
+- @Controller
+- @Repository
+- @Bean
+- @RestController
+</details>
+
+<details>
+	<summary>How does Spring framework resolve autowired entries?</summary>
+	By default, Spring resolves autowired entries by type.
+	
+*If more than one bean of the same type is available in the container, the framework will throw NoUniqueBeanDefinitionException,* indicating that more than one bean is available for autowiring.
+</details>
+
+<details>
+	<summary>What is @Order and @Priority ?</summary>
+Used to define the order of a bean when it is part of an ordered collection or when it needs to be ordered relative to other beans. It can be applied to classes or methods
+
+It is the same, but @Priority is JSR 250 and @Order is spring
+</details>
+
+<details>
+	<summary>What is @Value?</summary>
+Spring annotation that is used to inject externalized properties.
+</details>
+
+<details>
+	<summary>What is PropertySourcesPlaceholderConfigurer?</summary>
+Bean to configure application.properties. It should be static.
+</details>
+
+<details>
+	<summary>What is @Import annotation?</summary>
+	Spring annotation is used to import one or more configuration classes into another configuration class.
+</details>
+
+<details>
+	<summary>What is difference between @Repository, @Service, @Component, @Controller, @RestController? </summary>
+	
+- @Repository - @Component + is a repository (DDD) + Platform exceptions can be translated into DataAcessExceptions if using PersistenceExceptionTranslationPostProcessor
+- @Service - @Component with no specific logic added
+- @Controller - @Component + presentation layer + request mapping (dispatcher scans the annotated classes  and detects methods annotated)
+- @RestController - @Component + @Controller + @ResponseBody + can return JSON
+- @Component - Component scan scans only beans annotated with a component annotation.
+</details>
+
+<details>
+	<summary>How Spring detects stereotyped classes and register corresponding BeanDefinition instances with the ApplicationContext ?</summary>
+	@ComponentScan annotation points to the packages that should be scanned.
+</details>
+
+<details>
+	<summary>What is “lite” @Bean mode? </summary>
+When @Bean annotated method is placed out of the configuration class it is called lite mode bean. It means it won't be proxied and will be treated just like ordinary factory method. But it is managed by Spring container and can be injected.
+</details>
+
+<details>
+	<summary>How to conditionally include configuration or bean?</summary>
+
+1. We can use @Profile - can be declared on class or method.
+2. @Conditional - example: @Conditional("prod & cloud & !test"), @Conditional({"prod", "dev"}), @Conditional("(prod & cloud) | test") - if there is AND + OR always should be ().
+</details>
+
+<details>
+	<summary>How to activate profiles?</summary>
+	
+1. spring.profiles.active=... in application.properties
+2. @ActiveProfiles(...) in tests
+3. context.getEnvironment().setActiveProfiles("dev")
+</details>
+
+<details>
+	<summary>What is @PropertySource?</summary>
+Annotation that allows to add property source to environment. To be used in configuration classes: @PropertySource("classpath:/com/myco/app.properties")
+</details>
+
+<details>
+	<summary>How internalisation is implemented in Spring?</summary>
+	Spring provides i18 - **`MessageSource`**
+messages.properties
+</details>
+
+<details>
+	<summary>What is ApplicationEvent in Spring>?</summary>
+	Event handling in the ApplicationContext is provided through the ApplicationEvent class and the ApplicationListener interface. If a bean that implements the ApplicationListener interface is deployed into the context, every time an ApplicationEvent gets published to the ApplicationContext, that bean is notified.
+</details>
+
