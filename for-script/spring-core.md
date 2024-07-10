@@ -353,13 +353,13 @@ Bean to configure application.properties. It should be static.
 
 <details>
 	<summary>What is “lite” @Bean mode? </summary>
-When @Bean annotated method is placed out of the configuration class it is called lite mode bean. It means it won't be proxied and will be treated just like ordinary factory method. But it is managed by Spring container and can be injected.
+When @Bean annotated method is placed out of the configuration class it is called lite mode bean. It means it won't be proxied and will be treated just like the ordinary factory method. But it is managed by Spring container and can be injected.
 </details>
 
 <details>
 	<summary>How to conditionally include configuration or bean?</summary>
 
-1. We can use @Profile - can be declared on class or method.
+1. We can use @Profile - it can be declared on class or method.
 2. @Conditional - example: @Conditional("prod & cloud & !test"), @Conditional({"prod", "dev"}), @Conditional("(prod & cloud) | test") - if there is AND + OR always should be ().
 </details>
 
@@ -373,11 +373,11 @@ When @Bean annotated method is placed out of the configuration class it is calle
 
 <details>
 	<summary>What is @PropertySource?</summary>
-Annotation that allows to add property source to environment. To be used in configuration classes: @PropertySource("classpath:/com/myco/app.properties")
+Annotation that allows the addition of property source to the environment. To be used in configuration classes: @PropertySource("classpath:/com/myco/app.properties")
 </details>
 
 <details>
-	<summary>How internalisation is implemented in Spring?</summary>
+	<summary>How internalization is implemented in Spring?</summary>
 	Spring provides i18 - **`MessageSource`**
 messages.properties
 </details>
@@ -387,3 +387,28 @@ messages.properties
 	Event handling in the ApplicationContext is provided through the ApplicationEvent class and the ApplicationListener interface. If a bean that implements the ApplicationListener interface is deployed into the context, every time an ApplicationEvent gets published to the ApplicationContext, that bean is notified.
 </details>
 
+<details>
+	<summary>Which if placed inside application.properties will expose the "loggers" endpoint via HTTP?</summary>
+	management.endpoints.web.exposure.loggers.include=true
+</details>
+
+<details>
+	<summary>What are implementations of ApplicationContext interface?</summary>
+	
+1. Standalone: AnnotationConfigApplicationContext, ClassPathXmlApplicationContext, FileSystemXmlApplicationContext
+2. Web Applications: GenericWebApplicationContext, XmlWebApplicationContext, AnnotationConfigWebApplicationContext
+	
+</details>
+
+<details>
+	<summary>Which is the default severity order for the Health Indicator statuses, provided by Spring Boot?</summary>
+	DOWN, OUT_OF_SERVICE, UP, UNKNOWN
+</details>
+
+<details>
+	<summary>What annotations are equivalent to @SpringBootApplication?</summary>
+
+ - @SpringBootConfiguration
+ - @EnableAutoConfiguration
+ - @ComponentScan
+</details>
