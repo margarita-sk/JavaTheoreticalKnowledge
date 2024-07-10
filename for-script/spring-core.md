@@ -412,3 +412,80 @@ messages.properties
  - @EnableAutoConfiguration
  - @ComponentScan
 </details>
+
+<details>
+	<summary>Which is the default SpEL Compiler mode?</summary>
+	The SpEL compiler is not turned on by default, thus its default mode is OFF. The other two valid modes are IMMEDIATE and MIXED.
+</details>
+
+<details>
+	<summary>Which endpoints are exposed by default via HTTP, after adding spring-boot-starter-actuator?</summary>
+	Spring Boot Actuator exposes only two endpoints by default via HTTP. They are /actuator/health and /actuator/info.
+</details>
+
+<details>
+	<summary>Can BeanPostProcessor be used to swap a Bean implementation during runtime?</summary>
+	Since BeanPostProcessor interface defines two methods - postProcessBeforeInitialization and postProcessAfterInitialization. Both take two arguments - one of type Object representing the bean and one of type String representing the bean name. Furthermore, both have a return-type Object. That said, nothing can stop you from creating a custom class implementing BeanPostProcessor and providing logic for replacing, swapping, or casting the bean on certain conditions.
+</details>
+
+<details>
+	<summary>Which is the default logging system used by Spring Boot?</summary>
+Logback.
+</details>
+
+<details>
+	<summary>Which protocols can be used to access actuator endpoints?</summary>
+	Spring Boot Actuator supports two endpoints - HTTP and JMX.
+</details>
+
+<details>
+	<summary>Sintaxis of Value annotation</summary>
+	
+- @Value("#{environment['my.special.property']}") - if just form env
+- @Value("${my.special.property}") - if from property file that is already registered with the @PropertySource annotation
+
+</details>
+
+<details>
+	<summary>What is the correct order in which Spring Boot will look for externalized configuration - properties files?
+		
+1 - Profile Specific inside jar
+2 - Application Specific inside jar
+3 - Profile specific outside jar
+4 - Application specific outside jar</summary>
+
+Currently, for Spring 2.5.* config data files are considered in the following order:
+Application properties packaged inside your jar ( application.properties and YAML variants).
+Profile-specific application properties packaged inside your jar (application-{profile}.properties and YAML variants).
+Application properties  outside of your packaged jar (application.properties and YAML variants).
+Profile-specific application properties outside of your packaged jar (application-{profile}.properties sand YAML variants).
+Which would make the correct order 2,1,4,3.
+</details>
+
+<details>
+	<summary>Which annotations can be used on top of a field in Spring, for the field to be a candidate for dependency injection?</summary>
+	
+- @Autowired
+- @Inject
+- @Resource
+</details>
+
+<details>
+	<summary>What would "T(com.example.demo.model.Person).getId()" SPeL expression do?</summary>
+	Read the static property "id" of Person
+</details>
+
+<details>
+	<summary>What would "@car.horsePower" SpEL expression do? </summary>
+	Read the property horsePower of a Spring bean named "car".
+</details>
+
+<details>
+	<summary>The default embedded container that Spring Boot uses is Tomcat. Which of the following steps must be performed to change it to Jetty(for example)?</summary>
+	Exclude spring-boot-starter-tomcat and include spring-boot-starter-jetty as a dependency
+</details>
+
+<details>
+	<summary>Which protocol can be used to access the "loggers" endpoint by default, without using any additional configurations?</summary>
+	JMX (Java Management Extensions)
+</details>
