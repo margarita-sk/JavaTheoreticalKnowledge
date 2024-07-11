@@ -489,3 +489,11 @@ Which would make the correct order 2,1,4,3.
 	<summary>Which protocol can be used to access the "loggers" endpoint by default, without using any additional configurations?</summary>
 	JMX (Java Management Extensions)
 </details>
+
+<details>
+	<summary>When may the circular dependency exception appear?</summary>
+But there are drawbacks, and this is why using field injection is usually avoided.
+- Field injection creates a risk of *NullPointerException* if dependencies aren’t correctly initialized.
+- Using the field injection, we are unable to create immutable classes.
+- Design problems: 1 We can easily add more dependencies than necessary and create a class that's doing more than one job, 2 circular dependencies going unnoticed
+</details>
