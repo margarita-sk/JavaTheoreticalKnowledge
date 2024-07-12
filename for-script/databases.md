@@ -12,3 +12,21 @@
 - typically involves a version check. Each record has a version number (or a timestamp) that is updated every time the record is modified. When a transaction attempts to update a record, it checks if the version number has changed since it was read
 </details>
 
+
+<details>
+  <summary>Primary key vs Unique constraint?</summary>
+
+Primary key: 
+- is a unique identifier
+- cannot be null
+- only one per table
+- automatically creates a unique index
+
+Unique constraint: 
+- ensures uniqueness of values in the column(s)
+- can be null
+- many per table
+- automatically creates a unique index
+
+</details>
+
