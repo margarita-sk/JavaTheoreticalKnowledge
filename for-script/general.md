@@ -11,3 +11,19 @@
 | a little bit faster | a little bit slower |
 </details>
 
+
+<details>
+  <summary>What is diamond problem?</summary>
+    A
+   / \
+  B   C
+   \ /
+    D
+  In Java, there is no multiple inheritance. However, there are multiple interface implementations. In the case of default methods, the child needs to overwrite it. 
+</details>
+
+<details>
+  <summary>Can static methods be overwritten?</summary>
+  They are bound to their classes.
+  No, because invocation by class -  ClassA.call()
+</details>
