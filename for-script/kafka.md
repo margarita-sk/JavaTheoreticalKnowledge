@@ -20,3 +20,12 @@ In Apache Kafka, a broker is a fundamental component of the Kafka cluster.
 <details>
   <summary>If one consumer can read 2 partitions, so the same messages can duplicate?</summary>
 </details>
+
+<details>
+  <summary>How we can be sure the message come from exact partition?</summary>
+</details>
+
+<details>
+  <summary>Why do we need several partitions?</summary>
+
+</details>
