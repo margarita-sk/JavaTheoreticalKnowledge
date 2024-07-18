@@ -1,4 +1,15 @@
 <details>
+  <summary>What stands for SOLID?</summary>
+
+- S - single responsibility
+- O - open/close principle: open to extension, but close to editing
+- L - Barbara Liskov substitution principle: class can be replaced by any of its children, it means children’s behavior adds something but does not replace the parent’s behavior
+- I - interface segregation: Clients should not be forced to depend upon interfaces that they do not use
+- D - dependency inversion: Depend upon abstractions, [not] concretes.
+</details>
+
+
+<details>
   <summary>What is DDD?</summary>
 Domain-Driven Design (DDD) is a software development approach aimed at managing complex software projects by emphasizing the importance of deeply understanding the domain 
   (the business area or problem space) in which the software will be used. This methodology helps create a shared understanding among all stakeholders, 
@@ -64,4 +75,26 @@ Challenges of Event-Driven Design:
 - Asynchronous Processing: Events are typically processed asynchronously, meaning the application can continue to handle other tasks while waiting for events to occur. This asynchronous nature can improve responsiveness and scalability.
 - Loose Coupling: Event-Driven Design promotes loose coupling between components. Components or services that generate events do not need to know anything about the components that handle those events, promoting modularity and flexibility in the system architecture.
 - Publish-Subscribe Model: Often, Event-Driven Design utilizes a publish-subscribe (pub-sub) model, where components (publishers) emit events without knowledge of which components (subscribers) will handle them. Subscribers can register interest in specific types of events and receive notifications when those events occur.
+</details>
+
+<details>
+  <summary>Logs vs Metrics vs Traces?</summary>
+
+**Logs**
+Files that record events, warnings, and errors when they occur within a software environment
+Limitations: 
+- record only that was configured to record
+- logs created by containerized applications will disappear permanently when the container shuts down (if they weren’t written somewhere)
+
+**Metrics**
+Quantifiable measurements that reflect the health and performance of the application or infrastructure (Transaction per second, CPU consumed, latency and etc.) 
+Limitations: 
+- record only that was configured to record
+- are not detailed - the performance is low, but what is the cause?
+
+**Distributed traces**
+Data that tracks an application request as it flows through different parts of the application, where exactly the error occurs.
+Limitations: 
+- only a part of all application requests is traced in most cases
+- takes too much time and consumes too many resources
 </details>
