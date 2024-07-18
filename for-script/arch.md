@@ -1,11 +1,12 @@
 <details>
   <summary>What stands for SOLID?</summary>
+mnemonic acronym for five design principles intended to make object-oriented designs more understandable, flexible, and maintainable.
 
-- S - single responsibility
-- O - open/close principle: open to extension, but close to editing
-- L - Barbara Liskov substitution principle: class can be replaced by any of its children, it means children’s behavior adds something but does not replace the parent’s behavior
-- I - interface segregation: Clients should not be forced to depend upon interfaces that they do not use
-- D - dependency inversion: Depend upon abstractions, [not] concretes.
+- The [**S**ingle-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle): Every class should have only one responsibility.
+- The [**O**pen–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle): "entities should be open for extension, but closed for modification."
+- The [**L**iskov substitution principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle): - An inheriting class should complement, not replace, the behavior of a parent class (if we replace the subclass with the main class it should work)
+- The [**I**nterface segregation principle](https://en.wikipedia.org/wiki/Interface_segregation_principle): "Clients should not be forced to depend upon interfaces that they do not use." - lager interfaces should be split into smaller onece
+- The [**D**ependency inversion principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle): "Depend upon abstractions, [not] concretions."
 </details>
 
 
