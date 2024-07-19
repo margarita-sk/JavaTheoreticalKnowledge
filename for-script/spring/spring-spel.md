@@ -40,6 +40,17 @@ SpEL supports the following types of literal expressions:
 - null
 </details>
 
+
+<details>
+<summary>What operators can be used with SpEL?</summary>
+
+  - Relation operators:  `lt` (`<`), `gt` (`>`), `not` (`!`)
+  - Logical Operators: `and` (`&&`), `or` (`||`), `not` (`!`)
+  - Ternary Operator: "isMember(#queryName)? 'is a member' : #queryName + ' is not a member'"
+  - Elvis operator: "#{systemProperties['pop3.port'] ?: 25}"
+
+</details>
+
 <details>
   <summary>What relation operators supports SpEL?</summary>
     
@@ -67,3 +78,5 @@ SpEL supports the following types of literal expressions:
     - `not` (`!`)
     - etc.
 </details>
+
+
