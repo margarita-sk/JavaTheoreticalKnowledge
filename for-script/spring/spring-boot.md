@@ -61,7 +61,54 @@ Spring Boot uses Logback by default. You can customize Logback settings with a l
 - spring.datasource.username: The username used to authenticate with the MySQL database.
 - spring.datasource.password: The password used for authentication.
 - spring.datasource.driver-class-name: The JDBC driver class name. For MySQL, this is typically com.mysql.cj.jdbc.Driver.
-- spring.jpa.database-platform: Hibernate dialect for MySQL. This helps Hibernate generate SQL optimized for MySQL.
-- spring.jpa.show-sql: If true, SQL statements will be logged to the console.
-- spring.jpa.properties.hibernate.format_sql: If true, SQL statements will be formatted for readability.
 </details>
+
+<details>
+  <summary>How to configure default schema and initial data?</summary>
+
+- Configuring Default Schema: spring.jpa.properties.hibernate.default_schema=<schema-name>
+- Configuring Initial Data: A file named schema.sql or data.sql can be placed in the src/main/resources directory to initialize the database schema or data.
+- For unit tests, you can use the @Sql annotation to execute SQL scripts before or after a test method:     @Sql("/test-data.sql")
+</details>
+
+<details>
+  <summary>What is a fat jar? How is it different from the original jar?</summary>
+Fat jar includes application classes + all dependencies. Can be run directly with java -jar, self-contained.
+</details>
+
+<details>
+  <summary>What is the difference between an embedded container and a WAR?</summary>
+
+- Embedded Container: A server that is bundled within the application itself (e.g., Tomcat, Jetty, or Undertow). The application is packaged as a standalone JAR file that includes the server. No need for an external application server. Ideal for microservices and standalone applications. Simplifies deployment and configuration.
+- WAR: Requires an external server to deploy and run. Used in traditional server environments.
+</details>
+
+
+<details>
+  <summary>What embedded containers does Spring Boot support?</summary>
+  
+- Jetty
+- Tomcat
+- Undertow
+</details>
+
+
+<details>
+  <summary>Explane annotation: @SpringBootApplication</summary>
+Level: class
+Functionality: Combines @EnableAutoConfiguration, @ComponentScan, and @Configuration. Configures and launches a Spring Boot application.
+</details>
+
+<details>
+  <summary>Explane annotation: @EnableAutoConfiguration	</summary>
+Level: class
+Functionality: Enables Spring Boot’s auto-configuration feature.
+</details>
+
+<details>
+  <summary>Explane annotation: @ConfigurationProperties	</summary>
+Level: Class, Field
+Functionality: Enables Spring Boot’s auto-configuration feature.
+</details>
+
+
