@@ -79,4 +79,13 @@ SpEL supports the following types of literal expressions:
     - etc.
 </details>
 
+<details>
+  <summary>How to define in SpEL: type, constructor, bean references, collection selection</summary>
+
+- Type: ``"T(java.util.Date)"``
+- Constructor: ``"new org.spring.samples.spel.inventor.Inventor('Albert Einstein', 'German')"``
+- Bean from the application context: ``"@SomeBean"``
+- Bean from
+- Collection: ``"members.?[nationality == 'Serbian']"`` of ``"map.?[value<27]"``
+</details>
 
