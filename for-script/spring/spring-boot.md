@@ -286,14 +286,184 @@ http://localhost:8080/actuator/metrics/jvm.memory.used?tag=area:heap
 
 <details>
   <summary>How to create a custom metric with or without tags?</summary>
+  
+In Spring Boot, you can create custom metrics using the MeterRegistry provided by Micrometer.
+Creating a Custom Metric: inject MeterRegistry 
+1. Without Tags: meterRegistry.counter("custom.metric").increment();
+2. With Tags: meterRegistry.counter("custom.metric", "type", "example", "status", "success").increment(); In this example, "type" and "status" are tags with values "example" and "success".
+</details>
 
+<details>
+  <summary>What is Health Indicator in Spring Boot?</summary>
+
+ Health Indicator is a component that provides health information about an application or a particular part of it. Health Indicators contribute to the overall health status exposed by the /actuator/health endpoint, helping to monitor the application's health and diagnose issues.
+
+Key Features:
+- Health Check Integration: Health Indicators are automatically integrated into the Spring Boot Actuator's health endpoint.
+- Customizable: You can create custom health indicators to check the health of specific parts of your application.
+
+Custom health indicator: implements HealthIndicator
+</details>
+
+
+<details>
+  <summary>What are the Health Indicators that are provided out of the box?</summary>
+
+  Built-in Health Indicators:
+- Database: Checks the status of database connections.
+- Disk Space: Monitors available disk space.
+- Message Brokers: Checks the status of messaging systems like RabbitMQ, Kafka, etc.
+
+These health indicators are automatically included when you add the relevant dependencies to your project.
+</details>
+
+
+<details>
+  <summary>What is the Health Indicator status?</summary>
+
+In Spring Boot, the Health Indicator status is an indicator of the overall health of a specific component or the entire application. 
+- UP: The component or application is healthy and operating as expected.
+- DOWN: The component or application is not healthy and is experiencing issues.
+- OUT_OF_SERVICE: The component or application is intentionally taken out of service and should not be used.
+- UNKNOWN: The health status of the component or application cannot be determined.
+
+
+The "order of statuses" in the context of Spring Boot Health Indicators refers to the priority or precedence of the health statuses. When determining the overall health of the application, Spring Boot evaluates the health status of individual components and reports the most severe status encountered. Here's what the order implies:
+DOWN, OUT_OF_SERVICE, UNKNOWN, UP
 
 </details>
 
-@EnableScheduling	
-@EnableAsync	
 
-@EventListener	
+
+<details>
+  <summary>How to change the Health Indicator status severity order?</summary>
+
+1. Custom Health Indicators: Create custom health indicators to define your own health check logic (implements HealthIndicator)
+2. Custom Health Aggregator: Implement a custom HealthAggregator to control how individual health statuses are aggregated into the overall health status.
+</details>
+
+
+<details>
+  <summary>When to use @SpringBootTest annotation?</summary>
+
+The @SpringBootTest annotation in Spring Boot is used for integration testing. It is designed to bootstrap the entire Spring application context and run tests in an environment similar to a production setup. But it's not configure web server by default.
+</details>
+
+<details>
+  <summary>What does @SpringBootTest auto-configure</summary>
+@SpringBootTest = @BootstrapWith(SpringBootTestContextBootstrapper.class) + @ExtendWith({SpringExtension.class})
+
+It configures:
+- loads the full Spring application context, including all beans, configurations, and properties defined in your application
+- triggers all the auto-configuration classes that are typically loaded by Spring Boot when the application starts, ensuring that components such as data sources, JPA repositories, and web layers are configured
+- Loads application properties from application.properties
+- Ensures that all beans are properly autowired and dependencies are injected as they would be in the actual running application
+- Provides a pre-configured TestRestTemplate bean for making REST calls to the embedded web server
+- TestEntityManager: Offers a TestEntityManager for JPA-based tests, simplifying the setup and teardown of database state
+-  If you specify a web environment (e.g., SpringBootTest.WebEnvironment.RANDOM_PORT), it starts an embedded web server
+-  Allows overriding properties specifically for tests using the @TestPropertySource annotation or properties attribute of @SpringBootTest
+  
+</details>
+
+<details>
+  <summary>What dependencies does spring-boot-starter-test brings to the classpath?</summary>
+
+- JUnit 5 (Jupiter)
+- Spring Test
+- AssertJ
+- Hamcrest
+- Mockito
+- JSONassert
+- JsonPath
+- Spring Boot Test Autoconfigure
+</details>
+
+
+<details>
+  <summary>How to perform integration testing with @SpringBootTest for a web application?</summary>
+
+- Use webEnvironment attribute to specify the type of web environment (embedded server) to use for the tests.
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+- Use TestRestTemplate for HTTP Requests
+- Verify Web Layer Behavior
+- also you can configure Test Properties (Optional):
+@TestPropertySource(properties = {
+    "server.port=0", // Use a random port
+    "spring.datasource.url=jdbc:h2:mem:testdb" // Use an in-memory database
+})
+
+</details>
+
+
+<details>
+  <summary>When to use @WebMvcTest? What does it auto-configure?</summary>
+
+Use @WebMvcTest when you want to:
+- Test Spring MVC components, especially controllers, in isolation from the rest of the application.
+- Focus on the web layer’s behavior, including request handling and response formatting.
+
+Auto-Configured Components:
+- DispatcherServlet
+- RequestMappingHandlerMapping and RequestMappingHandlerAdapter
+- ExceptionHandlerExceptionResolver
+- MessageConverters and ContentNegotiationManager
+- MockMvc
+- Jackson
+</details>
+
+
+<details>
+  <summary>What are the differences between @MockBean and @Mock?</summary>
+
+- @MockBean: Used in Spring Boot tests to replace beans in the Spring ApplicationContext with mocks. Automatically integrates with the Spring context.
+- @Mock: Used in unit tests to create mock objects without involving the Spring context. Requires manual setup and initialization.
+</details>
+
+<details>
+  <summary>When to use @DataJpaTest for? What does it auto-configure?</summary>
+
+Use @DataJpaTest when you want to:
+- Test JPA repositories and data access layers.
+- Focus on database interactions and entity mappings.
+
+Auto-Configured Components:
+- In-Memory Database
+- EntityManager
+- Repositories: Scans and sets up Spring Data JPA repositories.
+- Transaction Management: Configures transactions that are rolled back after each test.
+- JPA Configuration: Provides basic JPA infrastructure for testing.
+</details>
+
+
+<details>
+  <summary>How to customize Spring auto configuration?</summary>
+
+- Exclude Auto-Configuration Classes: @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+- Customize Auto-Configured Beans: You can provide your own beans that override the auto-configured beans
+- Use Conditional Annotations
+- Profile-Specific Configuration
+- Customizing Spring Boot Starters: Define your own starter by creating a new module with a spring-boot-starter dependency and provide auto-configuration classes and meta-information in META-INF/spring.factories.
+- Using spring.factories : org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.example.MyCustomAutoConfiguration
+</details>
+
+
+<details>
+  <summary>How to enable support for scheduled tasks in SpringBoot?</summary>
+
+- Add @EnableScheduling	on @Configuration class. And @SpringBootApplication because it contains @Configuration inside.
+- @Scheduled: Used on methods to specify the execution schedule. @Scheduled(fixedRate = 5000) // Runs every 5 seconds
+</details>
+
+
+<details>
+  <summary>How to enable support for async operations in SpringBoot?</summary>
+
+- Add @EnableAsync on @Configuration class. And @SpringBootApplication because it contains @Configuration inside.
+- Add @Async on methods to indicate that they should be executed asynchronously. Returns: Can return void or a Future, CompletableFuture, or ListenableFuture.
+</details>
+
+
 
 
 
