@@ -87,7 +87,13 @@ Implementations of the ReactiveTransactionManager:
 </details>
 
 <details>
-  <summary></summary>
+  <summary>Why JTA transaction approach is not frequently used and what is used in applications instead?</summary>
+
+This approach is designed for managing distributed transactions across multiple resources, such as databases and messaging systems.
+- Configuring JTA can be complex and requires a properly configured application server that supports JTA (e.g., JBoss, WebLogic, WebSphere)
+- Managing distributed transactions involves significant overhead in coordinating multiple resources, which can impact performance and resource utilization.
+- Modern applications often follow a microservices architecture where services are decoupled and communicate over REST APIs or messaging systems. In this architecture, distributed transactions are avoided due to their complexity, and eventual consistency patterns are preferred.
+- For managing distributed data across microservices, patterns like Saga are often used, which provide a way to manage transactions without the need for a distributed transaction manager.
 </details>
 
 
