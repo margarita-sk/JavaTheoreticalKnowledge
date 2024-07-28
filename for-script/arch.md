@@ -99,3 +99,57 @@ Limitations:
 - only a part of all application requests is traced in most cases
 - takes too much time and consumes too many resources
 </details>
+
+
+<details>
+  <summary>What is Distributed System?</summary>
+Computer systems whose inter-communicating components are located on different networked computers.
+  
+Key features:
+- Horizontal Scalability: Adding more machines to handle increased load.
+- Vertical Scalability: Adding more resources (CPU, memory) to existing machines.
+- Fault Tolerance: Systems are designed to continue functioning even in the presence of failures. Achieved through redundancy, replication, and failover mechanisms.
+- Consistency: Ensuring all nodes see the same data at the same time.
+- Availability: Systems are designed to be operational 24/7.
+- Partition Tolerance: The system continues to operate despite network partitions.
+</details>
+
+<details>
+  <summary>Distributed System Common Architectures</summary>
+
+- Client-Server: Clients request services, and servers provide them. Examples: Web applications with web servers and database servers.
+- Peer-to-Peer (P2P): Each node (peer) acts as both a client and a server. Examples: File-sharing systems like BitTorrent.
+- Microservices: The application is decomposed into smaller, loosely coupled services.
+</details>
+
+
+<details>
+  <summary>Name consistency models of distributed system architecture</summary>
+
+- Strong Consistency: Guarantees immediate consistency across all nodes after an update.
+- Eventual Consistency: Ensures that, given enough time, all nodes will become consistent.
+- Causal Consistency: Ensures that causally related operations are seen by all nodes in the same order.
+</details>
+
+
+<details>
+  <summary>Name eventually consistency patterns</summary>
+
+- Event Sourcing: Storing all changes (events) to the state as a sequence of events
+- CQRS (Command Query Responsibility Segregation): Separates the read and write models for optimization
+- Saga Pattern: 
+</details>
+
+<details>
+  <summary>What is CAP theorem?</summary>
+
+The CAP theorem, also known as Brewer's theorem, is a fundamental principle in distributed systems that states it is impossible for a distributed data store to simultaneously provide more than two out of the following three guarantees:
+- Consistency (C): Every read receives the most recent write or an error. Ensures that all nodes in a distributed system see the same data at the same time.
+- Availability (A): Every request (read or write) receives a response, without guarantee that it contains the most recent write. Ensures that the system is always operational and responsive.
+- Partition Tolerance (P): The system continues to operate despite arbitrary message loss or failure of part of the system. Ensures that the system can handle network partitions where some nodes cannot communicate with others.
+
+According to the CAP theorem, in the presence of a network partition, a distributed system has to choose between:
+- Consistency and Availability
+- Availability and Partition Tolerance
+- Consistency and Partition Tolerance
+</details>
