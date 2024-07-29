@@ -164,6 +164,73 @@ When to Use ChainedTransactionManager
 </details>
 
 
+<details>
+  <summary>Name and explain @Transactional attributes</summary>
+
+- propagation: defult=PROPOGATION_REQUIRED
+- isolation: defult=ISOLATION_DEFAULT
+- timeout
+- readOnly: default=false
+- rollbackFor : This attribute is an array of exception classes that should cause the transaction to rollback. By default, transactions will only rollback on unchecked exceptions (subclasses of RuntimeException) and Errors.
+- rollbackForClassName
+- noRollbackFor
+- noRollbackForClassName
+</details>
+
+<details>
+  <summary>Name and explain @EnableTransactionManagement attributes</summary>
+
+- mode: default=AdviceMode.PROXY, AdviceMode.ASPECTJ
+- proxyTargetClass: default=false; false: Uses JDK dynamic proxies, which create proxies based on interfaces; true: Uses CGLIB proxies, which create a subclass of the target class
+- order: default=Ordered.LOWEST_PRECEDENCE; Ordered.LOWEST_PRECEDENCE: Ensures that the transaction advice is applied after other advices.
+</details>
+
+
+<details>
+  <summary>What is the difference between PROPOGATION_REQUIRES, PROPOGATION_REQUIRES_NEW and PROPOGATION_NESTED?</summary>
+
+Tx in Spring:
+- physical tx
+- logical tx
+
+- PROPOGATION_REQUIRES: n logical tx within 1 physical tx
+- PROPOGATION_REQUIRES_NEW: count(logical tx) = count(physical tx)
+- PROPOGATION_NESTED: n logical tx within 1 physical tx, BUT with savepoints and rollback among each logical tx
+</details>
+
+<details>
+  <summary>In JPA tests what is the default value to rollback? True or False? And how to change it?</summary>
+
+The default is rollback true.
+To Configure:
+- @Rollback(false)
+- @Commit
+</details>
+
+
+<details>
+  <summary>What is JPA provider?</summary>
+
+A JPA provider, also known as a JPA implementation, is a library or framework that implements the Java Persistence API (JPA) specification. The JPA specification itself is part of the Java EE (Enterprise Edition) platform and provides a standard way for Java applications to interact with relational databases. However, JPA is only a set of interfaces and guidelines; it does not provide the actual implementation. This is where JPA providers come into play.
+
+Key Responsibilities of a JPA Provider:
+- Mapping Java Objects to Database Tables: JPA providers handle the mapping between Java objects (entities) and database tables, including converting between different data types.
+- Query Execution: They translate JPQL (Java Persistence Query Language) and Criteria API queries into SQL queries that the database can execute.
+- Transaction Management: JPA providers manage transactions to ensure that database operations are executed consistently and reliably.
+- Entity Lifecycle Management: They manage the lifecycle of entities, including operations such as persisting, merging, removing, and finding entities.
+- Caching: Many JPA providers offer caching mechanisms to improve performance by reducing the number of database accesses.
+
+When you use Spring Data JPA in your project, the default JPA provider it uses is Hibernate. This is because Hibernate is the most commonly used JPA implementation and is included as the default provider in Spring Boot's starter dependencies for JPA.
+</details>
+
+<details>
+  <summary>Hibernate vs Spring Data JPA</summary>
+
+Hibernate is a JPA implementation, while Spring Data JPA is a JPA Data Access Abstraction. 
+</details>
+
+
+
 
 
 
