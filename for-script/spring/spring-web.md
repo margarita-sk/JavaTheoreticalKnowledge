@@ -104,6 +104,8 @@ In addition to the standard bean scopes available in the ApplicationContext, the
 - and others
 </details>
 
+
+
 <details>
   <summary>What annotations might you use on a controller method parameter?</summary>
 
