@@ -257,6 +257,41 @@ Yes
 </details>
 
 
+<details>
+  <summary>Which PlatformTransactionManager(s) can you use with JPA?</summary>
+
+- JpaTransactionManager
+- JtaTransactionManager
+- DataSourceTransactionManager -  While primarily used for JDBC transactions, this transaction manager can sometimes be used in combination with JPA if JPA is configured to use a DataSource directly.
+</details>
+
+
+<details>
+  <summary>What is a Repository interface in Spring?</summary>
+A Repository interface in Spring Data JPA is a central part of the Spring Data framework that provides a mechanism for encapsulating storage, retrieval, and search behavior for a particular entity type.
+
+- Domain-Specific
+- Common Repository Interfaces: CrudRepository, PagingAndSortingRepository, JpaRepository
+</details>
+
+
+<details>
+  <summary>What is @Query used for?</summary>
+The @Query annotation in Spring Data JPA is used to define custom JPQL (Java Persistence Query Language) or SQL queries directly on repository methods. 
+</details>
+
+<details>
+  <summary>What is @NamedQuery?</summary>
+
+Purpose: Define static JPQL queries that can be referenced by name.
+Usage: These annotations are used on entity classes to define predefined queries that can be executed from the entity manager.
+</details>
+
+<details>
+  <summary>What is @EntityListeners?</summary>
+
+The @EntityListeners annotation in JPA is used to specify one or more entity listener classes that will receive lifecycle events from the entity. These listeners can react to entity lifecycle events such as creation, update, and removal. 
+</details>
 
 
 
