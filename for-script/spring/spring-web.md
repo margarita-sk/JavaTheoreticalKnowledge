@@ -43,3 +43,93 @@ In addition to the standard bean scopes available in the ApplicationContext, the
 - application scope are created once per ServletContext
 - websocket scope are created per WebSocket session
 </details>
+
+
+<details>
+  <summary>What are @Controller and @RestController annotations?</summary>
+
+- @Controller - @Component + presentation layer + request mapping (dispatcher scans the annotated classes and detects methods annotated)
+- @RestController - @Component + @Controller + @ResponseBody + can return JSON
+</details>
+
+<details>
+  <summary>How is an incoming request mapped to a controller and mapped to a method?</summary>
+
+- Component Scanning: Spring scans for classes annotated with @Controller (or @RestController) and registers them as beans.
+- DispatcherServlet: This front controller receives all HTTP requests and delegates them to a HandlerMapping.
+- Handler Mapping: The HandlerMapping determines the appropriate controller and method based on request URL and HTTP method using @RequestMapping, @GetMapping, etc.
+- Method Execution: The selected controller method is invoked, with parameters bound from the request using annotations like @RequestParam, @PathVariable, or @RequestBody.
+</details>
+
+<details>
+  <summary>What is the difference between @RequestMapping and @GetMapping?</summary>
+
+@GetMapping is a shortcut of @RequestMapping(method = RequestMethod.GET)
+</details>
+
+<details>
+  <summary>What are the differences between @RequestParam and @PathVariable?</summary>
+
+- @RequestParam maps query parameter: ?param=smth
+- @PathVariable maps part of the path: /{pVariable}/smth
+
+</details>
+
+
+<details>
+  <summary>Name URL patterns that can be used for @RequestMapping methods mapping</summary>
+
+- PathPattern — Designed for web use, this solution deals effectively with encoding and path parameters, and matches efficiently. Is the recommended solution for web applications and it is the only choice in Spring WebFlux. Allows for optional segments, regex-like constraints, and better variable extraction
+- AntPathMatcher — match String patterns against a String path. This is the original solution also used in Spring configuration to select resources on the classpath, on the filesystem, and other locations. It is less efficient and the String path input is a challenge for dealing effectively with encoding and other issues with URLs. /files/*, /files/**.
+</details>
+
+
+<details>
+  <summary>What are the parameter types for a controller method?</summary>
+
+- WebRequest, NativeWebRequest
+- ServletRequest, HttpServletRequest, or Spring’s MultipartRequest, MultipartHttpServletRequest.
+- HttpSession
+- PushBuilder
+- Principal
+- HttpMethod
+- Locale, TimeZone, ZoneId
+- InputStream, Reader
+- OutputStream, Writer
+- @PathVariable, @MatrixVariable, @RequestParam, @RequestHeader, @CookieValue, @RequestBody, @RequestPart
+- HttpEntity<B>
+- Map, Model, ModelMap
+- Errors, BindingResult
+- @SessionAttributes
+- and others
+</details>
+
+<details>
+  <summary>What annotations might you use on a controller method parameter?</summary>
+
+- @RequestParam: For query parameters.
+- @PathVariable: For URL path variables.
+- @RequestBody: For request bodies.
+- @RequestHeader: For HTTP headers.
+- @CookieValue: For cookies.
+- @ModelAttribute: For form data and model attributes.
+- @SessionAttributes: For session attributes.
+- @RequestPart: For multipart request parts.
+</details>
+
+
+<details>
+  <summary>What are the valid return types of a controller method?</summary>
+
+- String
+- ModelAndView, View
+- @ModelAttribute
+- void
+- HttpEntity<B>, ResponseEntity<B>
+- @ResponseBody
+- HttpHeaders
+- ErrorResponse
+- ProblemDetail
+- DeferredResult<V>, Callable<V>, CompletableFuture<V> and etc
+- StreamingResponseBody
+</details>
