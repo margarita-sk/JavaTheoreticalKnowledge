@@ -229,6 +229,32 @@ When you use Spring Data JPA in your project, the default JPA provider it uses i
 Hibernate is a JPA implementation, while Spring Data JPA is a JPA Data Access Abstraction. 
 </details>
 
+<details>
+  <summary>How do you configure a DataSource in Spring Boot?</summary>
+
+application.properties or application.yml file for configuration
+- spring.datasource.url=
+- spring.datasource.username=
+- spring.datasource.password=
+- spring.datasource.driver-class-name=
+</details>
+
+
+<details>
+  <summary>Is the JDBC template able to participate in an existing transaction?</summary>
+
+Yes
+```
+    @Transactional
+    public void performTransactionalOperation() {
+        // This operation participates in the transaction started by @Transactional
+        String sqlUpdate = "UPDATE my_table SET column_name = 'value' WHERE id = 1";
+        jdbcTemplate.update(sqlUpdate);
+        
+        // Any other operations here will also participate in the same transaction
+    }
+```
+</details>
 
 
 
