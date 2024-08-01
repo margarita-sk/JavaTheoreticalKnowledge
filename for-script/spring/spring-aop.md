@@ -1,21 +1,23 @@
 <details>
-  <summary>What is AOP</summary>
-Aspect orienting programming allows to solve cross-cutting consern. When we have a layered application and there is some functionality 
+  <summary>What is AOP</summary><br>
+Aspect-orienting programming allows for solving cross-cutting concerns. When we have a layered application and there is some functionality 
   that cuts across the layers, like logging, security, transaction management and etc.
 </details>
 
 <details>
-  <summary>What is cross-cutting consern?</summary>
+  <summary>What is a cross-cutting concern?</summary><br>
   Concern that cut across multiple types and objects
 </details>
 
 <details>
-  <summary>What are components of AOP?</summary>
+  <summary>What are components of AOP?</summary><br>
 
-- aspect
-- join point
-- advice
-- pointcut
+<ol>
+    <li>aspect</li>
+    <li>join point</li>
+    <li>advice</li>
+	<li>pointcut</li>
+</ol>
 </details>
 
 <details>
