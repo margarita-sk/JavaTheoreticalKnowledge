@@ -89,3 +89,8 @@ SpEL supports the following types of literal expressions:
 - Collection: ``"members.?[nationality == 'Serbian']"`` of ``"map.?[value<27]"``
 </details>
 
+
+<details>
+  <summary>What is the default SpEL Compiler mode?</summary>
+</details>
+
