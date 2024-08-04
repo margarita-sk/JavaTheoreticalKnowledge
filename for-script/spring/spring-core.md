@@ -497,3 +497,15 @@ But there are drawbacks, and this is why using field injection is usually avoide
 - Using the field injection, we are unable to create immutable classes.
 - Design problems: 1 We can easily add more dependencies than necessary and create a class that's doing more than one job, 2 circular dependencies going unnoticed
 </details>
+
+
+<details>
+	<summary>There is a class where one of the fields of type Animal is annotated with @Autowired. There are two beans extending Animal: Cat and Dog. Which problem may occur and how can it be solved?</summary>
+
+When you have a field of type Animal annotated with @Autowired, and there are two beans of types Cat and Dog (both extending Animal), Spring will encounter an ambiguity when trying to autowire the Animal field because it won't know which bean to inject. This situation will result in a NoUniqueBeanDefinitionException.
+
+Solutions:
+1. @Qualifier with name on the field: @Autowired @Qualifier("cat") private Animal animal;
+2. @Primary on one of the bean definitions.
+3. Autowire by Field Name: @Autowired private Animal cat;
+</details>
