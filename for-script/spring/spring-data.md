@@ -294,6 +294,19 @@ The @EntityListeners annotation in JPA is used to specify one or more entity lis
 </details>
 
 
+<details>
+  <summary>Explain JPA Method queries structure</summary>
+
+The method names in Spring Data JPA repositories are composed of several parts:
+- Keyword Prefix: Defines the type of query (e.g., find, read, get, query, count, delete, etc.).
+- Limiting keywords that can be used are "first" or "top"
+- Entity Property
+- Condition: And, Or, Between, LessThan, GreaterThan, Like, etc.
+- Numbers are allowed in the method name.
+</details>
+
+
+
 
 
 
