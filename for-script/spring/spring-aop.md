@@ -234,3 +234,26 @@ public void validateAccount(Account account) {
 }
 ```
 </details>
+
+
+<details>
+	<summary>With what type of advice can be used JoinPoint argument?</summary>
+With all
+</details>
+
+<details>
+	<summary>Arguments for different methods annotated with advice</summary>
+
+- @Before("execution(* com.example.service.*.*(..))") public void logBefore(JoinPoint joinPoint) {}
+- @AfterReturning(pointcut = "execution(* com.example.service.*.*(..))", returning = "result") public void logAfterReturning(JoinPoint joinPoint, Object result) {}
+- @AfterThrowing(pointcut = "execution(* com.example.service.*.*(..))", throwing = "ex") public void logAfterThrowing(JoinPoint joinPoint, Throwable ex) {}
+- @After("execution(* com.example.service.*.*(..))") public void logAfter(JoinPoint joinPoint) {}
+- @Around("execution(* com.example.service.*.*(..))") public Object around(ProceedingJoinPoint joinPoint) throws Throwable {}
+
+JoinPoint provides:
+- Method Signature: Get the name, return type, and parameter types of the method.
+- Method Arguments: Access and modify the arguments passed to the method.
+- Target Object: Access the object on which the method is being invoked.
+
+ProceedingJoinPoint provides the same + Object result = proceedingJoinPoint.proceed(args);
+</details>
