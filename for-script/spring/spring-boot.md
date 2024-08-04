@@ -463,6 +463,12 @@ com.example.MyCustomAutoConfiguration
 - Add @Async on methods to indicate that they should be executed asynchronously. Returns: Can return void or a Future, CompletableFuture, or ListenableFuture.
 </details>
 
+<details>
+  <summary>Which endpoints are exposed by default via HTTP, after adding spring-boot-starter-actuator as a dependency to your project?</summary>
+
+- /actuator/info
+- /actuator/health
+</details>
 
 
 
