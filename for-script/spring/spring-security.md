@@ -17,3 +17,13 @@ It's a class that acts as a proxy for a standard Servlet Filter, delegating to a
 
 It's a class that associates a given SecurityContext  with the current execution thread
 </details>
+
+<details>
+  <summary>What annotations will be enabled by the usage of @EnableGlobalMethodSecurity(jsr250Enabled = true) </summary>
+
+- @RolesAllowed: Restricts access to methods based on user roles.
+- @PermitAll: Allows all users to access the method.
+- @DenyAll: Denies access to all users.
+- @DeclareRoles: Declares security roles within the application.
+</details>
+
