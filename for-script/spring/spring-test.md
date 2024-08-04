@@ -36,3 +36,7 @@ MOCK
 - @ParameterizedTest + @ValueSource(strings = {"Hello", "JUnit"})
 - @ExtendWith
 </details>
+
+<details>
+  <summary>Question 02 - What type of tests typically use Spring?</summary>
+</details>
