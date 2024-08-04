@@ -144,3 +144,12 @@ DispatcherServlet must be declared, they are not configured with the usage of @E
 If using xml based configuration we must define DispatcherServlet in our web.xml file, thats true.
 When using configuration without web.xml a configuration class that extends AbstractDispatcherServletInitializer or AbstractAnnotationConfigDispatcherServletInitializer must be declared.
 </details>
+
+
+<details>
+  <summary>What is @EnableWebMvc?</summary>
+
+-  Activates Spring MVC with default settings and allows for extensive customization via WebMvcConfigurer.
+-  Configures essential MVC components like view resolvers, message converters, static resource handlers, interceptors, handler mappings, and exception handling.
+-  
+</details>
