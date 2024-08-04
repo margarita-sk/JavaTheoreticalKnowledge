@@ -484,6 +484,16 @@ Yes. For example if spring.datasource.platform is set to "mysql", then scripts n
 </details>
 
 
+<details>
+  <summary>What is the correct order in which Spring Boot will look for externalized configuration - properties files?</summary>
+
+- Application properties packaged inside your jar ( application.properties and YAML variants).
+- Profile-specific application properties packaged inside your jar (application-{profile}.properties and YAML variants).
+- Application properties  outside of your packaged jar (application.properties and YAML variants).
+- Profile-specific application properties outside of your packaged jar (application-{profile}.properties sand YAML variants).
+</details>
+
+
 
 
 
