@@ -471,7 +471,10 @@ com.example.MyCustomAutoConfiguration
 </details>
 
 
-
+<details>
+  <summary>Which is the default logging system used by Spring Boot?</summary>
+Logback
+</details>
 
 
 
