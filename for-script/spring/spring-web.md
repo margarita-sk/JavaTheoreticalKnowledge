@@ -135,3 +135,12 @@ In addition to the standard bean scopes available in the ApplicationContext, the
 - DeferredResult<V>, Callable<V>, CompletableFuture<V> and etc
 - StreamingResponseBody
 </details>
+
+<details>
+  <summary>Is DispatcherServlet configured by default in any Spring application when using @EnableWebMVC on top of a @Configuration class?</summary>
+
+No.
+DispatcherServlet must be declared, they are not configured with the usage of @EnableWebMVC.
+If using xml based configuration we must define DispatcherServlet in our web.xml file, thats true.
+When using configuration without web.xml a configuration class that extends AbstractDispatcherServletInitializer or AbstractAnnotationConfigDispatcherServletInitializer must be declared.
+</details>
