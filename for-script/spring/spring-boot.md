@@ -521,3 +521,9 @@ Yes. For example if spring.datasource.platform is set to "mysql", then scripts n
 </details>
 
 
+<details>
+  <summary>What steps must be performed in order to change the embedded container that Spring Boot uses to Jetty?</summary>
+  Exclude spring-boot-starter-tomcat and include spring-boot-starter-jetty as a dependency
+</details>
+
+
