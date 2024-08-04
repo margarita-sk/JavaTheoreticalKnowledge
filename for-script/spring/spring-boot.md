@@ -493,6 +493,22 @@ Yes. For example if spring.datasource.platform is set to "mysql", then scripts n
 - Profile-specific application properties outside of your packaged jar (application-{profile}.properties sand YAML variants).
 </details>
 
+<details>
+  <summary>Which endpoints are exposed by default via JMX, after adding spring-boot-starter-actuator as a dependency to your project?</summary>
+
+- beans: Provides a complete list of all the Spring beans in your application.
+- conditions (formerly known as autoconfig): Displays conditions that were evaluated on configuration classes and auto-configuration classes, showing which ones were applied and which ones were not.
+- configprops: Shows all @ConfigurationProperties beans.
+- env: Exposes properties from the Spring Environment (including System properties, environment variables, and application properties).
+- health: Provides health information.
+- info: Displays arbitrary application information.
+- loggers: Shows and modifies the configuration of loggers in the application.
+- metrics: Exposes various metrics related to the application.
+- mappings: Displays a list of all @RequestMapping paths.
+- threaddump: Provides a thread dump of the application.
+- httptrace: Displays HTTP trace information (recent HTTP requests).
+</details>
+
 
 
 
