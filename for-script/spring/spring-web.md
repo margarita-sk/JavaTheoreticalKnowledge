@@ -153,3 +153,8 @@ When using configuration without web.xml a configuration class that extends Abst
 -  Configures essential MVC components like view resolvers, message converters, static resource handlers, interceptors, handler mappings, and exception handling.
 -  
 </details>
+
+<details>
+  <summary>Which pattern is used in antMatcher or mvcMatcher to match a single character?</summary>
+  ?
+</details>
