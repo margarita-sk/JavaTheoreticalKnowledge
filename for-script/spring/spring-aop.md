@@ -257,3 +257,19 @@ JoinPoint provides:
 
 ProceedingJoinPoint provides the same + Object result = proceedingJoinPoint.proceed(args);
 </details>
+
+
+<details>
+	<summary>What features are available out of the box by Spring Boot actuator?</summary>
+
+- /actuator/health
+- /actuator/metrics
+- /actuator/env
+- /actuator/info
+- /actuator/threaddump
+- /actuator/loggers
+- /actuator/auditevents
+- /actuator/prometheus: (If the micrometer-registry-prometheus dependency is included)
+- /actuator/httptrace
+- /actuator/shutdown: (If enabled) Allows you to gracefully shut down the application via a POST request. This endpoint must be explicitly enabled due to its potentially disruptive nature.
+</details>
