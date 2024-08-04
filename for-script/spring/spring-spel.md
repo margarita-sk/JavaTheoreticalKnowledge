@@ -92,5 +92,12 @@ SpEL supports the following types of literal expressions:
 
 <details>
   <summary>What is the default SpEL Compiler mode?</summary>
+OFF.
+
+Even when the SpEL compiler is disabled, Spring can still evaluate SpEL expressions interpretively instead of compiling them into bytecode.
+In Interpretation mode: Spring parses the SpEL expression into an abstract syntax tree (AST). The parsed expression tree is then evaluated at runtime. Spring traverses the AST and interprets each node to produce the final value.
+
+While interpretive evaluation is slightly slower than compiled evaluation due to the overhead of interpreting the AST at runtime, it is still effective and correct. The difference is mostly noticeable in scenarios with a high volume of SpEL evaluations.
+
 </details>
 
