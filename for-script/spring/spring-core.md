@@ -514,3 +514,11 @@ Solutions:
 	<summary>Which endpoint shows a list of all possible URLs that can be accessed in the application?</summary>
 mappings
 </details>
+
+<details>
+	<summary>What annotations can be used on top of a field in Spring, for the field to be a candidate for dependency injection?</summary>
+
+- @Autowired
+- @Resource
+- @Inject
+</details>
