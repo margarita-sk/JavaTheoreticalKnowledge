@@ -510,6 +510,14 @@ Yes. For example if spring.datasource.platform is set to "mysql", then scripts n
 </details>
 
 
+<details>
+  <summary>Can @Profile be used with SpEL?</summary>
+  NO. 
 
+  But it can be used with: 
+- ! logical "not" of the profile
+- | logical "or" of the profile
+- & logical "and" of the profile
+</details>
 
 
