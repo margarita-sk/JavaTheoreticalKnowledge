@@ -477,6 +477,13 @@ Logback
 </details>
 
 
+<details>
+  <summary>Can the default script names for schema.sql and data.sql be customized?</summary>
+
+Yes. For example if spring.datasource.platform is set to "mysql", then scripts names data-mysql.sql and schema-mysql.sql will be loaded.
+</details>
+
+
 
 
 
