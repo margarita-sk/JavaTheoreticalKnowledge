@@ -101,3 +101,10 @@ While interpretive evaluation is slightly slower than compiled evaluation due to
 
 </details>
 
+<details>
+  <summary>How can we configure SpEL compiler mode?</summary>
+
+- through spring.expression.compiler.mode, by setting the value to be one of the SpelCompilerMode enum - OFF, IMMEDIATE or MIXED
+- if we use SpEL through ExpressionParser, we can use SpelCompilerConfiguration class as well to manipulate the compilers mode.
+</details>
+
