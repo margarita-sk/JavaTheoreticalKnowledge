@@ -509,3 +509,8 @@ Solutions:
 2. @Primary on one of the bean definitions.
 3. Autowire by Field Name: @Autowired private Animal cat;
 </details>
+
+<details>
+	<summary>Which endpoint shows a list of all possible URLs that can be accessed in the application?</summary>
+mappings
+</details>
