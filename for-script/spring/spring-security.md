@@ -98,8 +98,78 @@ In Spring Security, the ** pattern used in antMatcher or mvcMatcher is a wildcar
 </details>
 
 
+<details>
+  <summary>Does Spring Security support password hashing</summary>
+
+Yes. Password hashing is a process of transforming a plain-text password into a hashed value using a cryptographic hash function. Spring Security provides built-in support for password hashing through various PasswordEncoder implementations. Some common implementations include:
+- BCryptPasswordEncoder
+- PBKDF2PasswordEncoder: Uses the PBKDF2 (Password-Based Key Derivation Function 2) algorithm, which applies a cryptographic hash function multiple times.
+- SCryptPasswordEncoder
+- NoOpPasswordEncoder: For cases where no encoding is applied (not recommended for production use).
+</details>
 
 
+<details>
+  <summary>What is Salting in a security context and how does Spring handle it?</summary>
+
+  Salting involves adding a random value (called a "salt") to the password before hashing it. This random value is unique for each password and ensures that even if two users have the same password, their hashed values will be different due to different salts.
+
+Spring Security implementations like BCryptPasswordEncoder, PBKDF2PasswordEncoder, and SCryptPasswordEncoder handle salting automatically, providing robust protection against password-cracking attacks.
+</details>
+
+
+<details>
+  <summary>How method-security is enabled in Spring?</summary>
+
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true):
+- prePostEnabled = true: Enables Spring Security pre/post annotations (@PreAuthorize, @PostAuthorize).
+- securedEnabled = true: Enables the use of the @Secured annotation.
+- jsr250Enabled = true: Enables the use of JSR-250 annotations like @RolesAllowed.
+</details>
+
+<details>
+  <summary>Name security levels in Spring Security and how they are implemented</summary>
+
+- URL Level Security: antMatchers(), mvcMatchers()
+- Method Level Security: prePost, secured, jsr250
+</details>
+
+
+<details>
+  <summary>Name and explain prePost security annotations in Spring</summary>
+way to secure methods and classes
+  
+- @PreAuthorize: specify a condition that must be met before a method is invoked, uses Spring Expression Language (SpEL): @PreAuthorize("hasRole('ROLE_USER') and #user.id == principal.id")
+- @PostAuthorize: @PostAuthorize("returnObject.owner == authentication.principal.username")
+</details>
+
+
+<details>
+  <summary>Explain @Secured annotation in Spring</summary>
+
+  @Secured - method level annotation, is used to specify a list of roles that are allowed to invoke a method: @Secured({"ROLE_USER", "ROLE_ADMIN"})
+</details>
+
+
+<details>
+  <summary>Name and explain JSR-250 security annotations in Spring</summary>
+way to secure methods and classes using role-based access control
+  
+- @RolesAllowed: @RolesAllowed({"ROLE_USER", "ROLE_ADMIN"})
+- @PermitAll: method or class is accessible to all users, regardless of their roles
+- @DenyAll: a method or class is not accessible to any users. This can be useful for methods that are deprecated or under development and should not be accessible
+</details>
+
+
+<details>
+  <summary>What is the difference between @PreAuthorise("hasRole('ROLE_USER')") and @RolesAllowed("ROLE_USER")?</summary>
+
+- both annotations can achieve similar results for simple role-based access control
+- @PreAuthorize offers more flexibility and functionality. If you need to incorporate complex security logic or conditions, @PreAuthorize is the better choice. For straightforward role checks, @RolesAllowed can be simpler and sufficient.
+- @PreAuthorize: Requires enabling global method security in Spring with @EnableGlobalMethodSecurity(prePostEnabled = true).
+- @RolesAllowed: Supported by default in Spring Security without additional configuration, provided the JSR-250 annotations are enabled.
+
+</details>
 
 
 <details>
