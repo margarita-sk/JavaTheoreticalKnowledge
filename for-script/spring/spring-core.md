@@ -1,11 +1,17 @@
+keywords:
+- overview
+- spring_container
+- bean_configuration
+
 <details>
-  <summary>What is Spring?</summary>
+  <div class="keyword">overview</div> <summary>What is Spring?</summary>
+
 Spring is a framework for building Java applications that contains a lot of different modules that can be added or not depending on needs. 
 The key feature of the Spring framework is the inversion of control.
 </details>
 
 <details>
-  <summary>What are Spring modules?</summary>
+ <div class="keyword">overview</div>  <summary>What are Spring modules?</summary>
   
   - Spring Core container
   - Spring AOP
@@ -16,22 +22,22 @@ The key feature of the Spring framework is the inversion of control.
 
 
 <details>
-  <summary>What is Inversion of Control?</summary>
+  <div class="keyword">spring_container</div> <summary>What is Inversion of Control?</summary>
   It is the design principle when the dependent part is not responsible for creating and managing its dependencies. 
 </details>
 
 <details>
-  <summary>What is Dependency Injection?</summary>
+  <div class="keyword">spring_container</div> <summary>What is Dependency Injection?</summary>
   DI is a form of IoC when an IoC container injects dependencies into dependent parts.
 </details>
 
 <details>
-  <summary>What is Dependency Lookup?</summary>
+  <div class="keyword">spring_container</div> <summary>What is Dependency Lookup?</summary>
   It's a form of IoC when the dependent part looks for dependencies.
 </details>
 
 <details>
-  <summary>Advantages and Disadvantages of Dependency Injection</summary>
+  <div class="keyword">spring_container</div> <summary>Advantages and Disadvantages of Dependency Injection</summary>
   
   Advantages:
   - low coupling
@@ -45,44 +51,47 @@ The key feature of the Spring framework is the inversion of control.
 </details>
 
 <details>
-  <summary>BeanFacory vs ApplicationContext</summary>
+  <div class="keyword">spring_container</div> <summary>BeanFacory vs ApplicationContext</summary>
 
-  | |BeanFactory|ApplicationContext|
-  |-----|-----|----|
-  | | simplest container providing DI support| implements BeanFactory and adds more features|
-  |bean initialization | lazy | by default eager | 
-  | when to use | lightweight apps where memory consumption is critical | all other cases | 
-  | event propogation| no | supports |
-  | BeanFactoryPostProcessor | no automatic registration | automatic registration |
-  | BeanPostProcessor | no automatic registration | automatic registration |
-  | message resource handling| no | yes |
-  | internationalization| no | yes |
+BeanFactory:
+- simplest container providing DI support
+- bean initialization - lazy
+- when to use - lightweight apps where memory consumption is critical
+
+ApplicationContext:
+- implements BeanFactory and adds more features
+- bean initialization - by default eager
+- when to use - all other cases
+- event propagation support
+- BeanFactoryPostProcessor, BeanPostProcessor automatic registration
+- message resource handling
+- internationalization
 </details>
 
 <details>
-  <summary>What is the ApplicationContext?</summary>
+   <div class="keyword">spring_container</div> <summary>What is the ApplicationContext?</summary>
   Interface that represents IoC container and is responsible for bean management.
 </details>
 
 <details>
-  <summary>What is a Bean?</summary>
-  Object that is handled by Spring IoC container
+  <div class="keyword">bean_configuration</div> <summary>What is a Bean?</summary>
+  An object that is handled by Spring IoC container
 </details>
 
 <details>
-  <summary>Can @Bean annotated methods be static?</summary>
+  <div class="keyword">bean_configuration</div> <summary>Can @Bean annotated methods be static?</summary>
   Yes, but they won't participate in the bean lifecycle as normal beans. They will be created before bean instantiation and without a proxy mechanism. 
   It can be useful if we would like to create BeanFactoryPostProcessor and BeanPostProcessor beans.
 </details>
 
 <details>
-  <summary>Can @Bean methods be final?</summary>
+ <div class="keyword">bean_configuration</div> <summary>Can @Bean methods be final?</summary>
   No, it will cause a compilation error.
 </details>
 
 <details>
-  <summary>How ApplicationContext define which objects to instantiate, configure, and assemble?</summary>
-BeanDefinitionReader reads configuration metadata: 1 XML, 2 Java annotations, 3 Java code and creates BeanDefinitions. Based on them beans are 
+  <div class="keyword">spring_container</div> <summary>How ApplicationContext define which objects to instantiate, configure, and assemble?</summary>
+BeanDefinitionReader reads configuration metadata: 1 XML, 2 Java annotations, and 3 Java code and creates BeanDefinitions. Based on that beans are 
   instantiated and configured (scope, dependencies, other configuration settings)
 </details>
 
@@ -334,6 +343,11 @@ Bean to configure application.properties. It should be static.
 <details>
 	<summary>What is @Import annotation?</summary>
 	Spring annotation is used to import one or more configuration classes into another configuration class.
+```
+@SpringBootApplication
+@Import(AdditionalConfig.class)
+public class Application {}
+	```
 </details>
 
 <details>
