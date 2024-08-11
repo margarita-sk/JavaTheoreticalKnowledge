@@ -527,3 +527,12 @@ Yes. For example if spring.datasource.platform is set to "mysql", then scripts n
 </details>
 
 
+<details>
+  <summary>Which steps are necessary to create a class, container for properties defined in the properties file?</summary>
+
+1. Define a class, annotate it with @ConfigurationProperties and provide a prefix so that the class knows properties with which prefix to search for. Fields of class must match the name of the properties.
+2. Bind properties: using setters or using @ConstructorBinding to specify that the properties will be injected via constructor arguments, rather than calling setter methods (The usage of @Value is discouraged in such cases because this is a different approach for binding properties.)
+3. Enable it for the application:
+- we must add @ConfigurationPropertiesScan on top of our @SpringBootApplication class
+- another approach would be to manually register each class, annotated with @ConfigurationProperties with the usage of @EnableConfigurationProperties(CustomConfigPojo.class).
+</details>
