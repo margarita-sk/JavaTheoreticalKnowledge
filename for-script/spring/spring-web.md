@@ -158,3 +158,9 @@ When using configuration without web.xml a configuration class that extends Abst
   <summary>Which pattern is used in antMatcher or mvcMatcher to match a single character?</summary>
   ?
 </details>
+
+
+
+<details>
+  <summary>How does WebFlux works if it share SecurityContext?</summary>
+</details>
